@@ -1,5 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 import { GamesContextProvider } from './contexts/GamesContext';
+
 import { Router } from './Router';
 
 function App() {
