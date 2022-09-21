@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Tira o relogio do input time e centraliza os numeros */
+@layer utilities {
+  input[type='time'] {
+    text-align: center;
+  }
+  input[type='time']::-webkit-calendar-picker-indicator {
+    display: none;
+    background: none;
+  }
+
+  .select-trigger[data-placeholder] {
+    color: #71717a;
+  }
+
+  .select-item[data-highlighted] {
+    background-color: #8b5cf6;
+    color: #ffff;
+  }
+
+  .select-item[data-disabled] {
+    color: #71717a;
+    pointer-events: none;
+  }
+}
