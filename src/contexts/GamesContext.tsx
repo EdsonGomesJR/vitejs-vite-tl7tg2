@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, ReactNode, useState } from 'react';
 
 interface Game {
   id: string;
@@ -25,7 +25,7 @@ export function GamesContextProvider({ children }: GamesContextProviderProps) {
 
   function listGames() {
     axios(
-      'https://3333-edsongomesj-servernlwes-1lh39sgpi82.ws-us65.gitpod.io/games'
+      'https://3333-edsongomesj-servernlwes-1lh39sgpi82.ws-us67.gitpod.io/games'
     ).then((response) => {
       setGames(response.data);
     });

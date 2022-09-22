@@ -1,25 +1,18 @@
-import { createContext, useContext, useState } from 'react';
-
-import { BrowserRouter as Router, Route, Routes, Link, NavLink } from 'react-router-dom';
-
-import { AdsPage } from './AdsPage';
+import { NavLink } from 'react-router-dom';
 
 interface GameBannerProps {
-  id: string
+  id: string;
   bannerUrl: string;
   title: string;
   adsCount: number;
 }
 
-
 export function GameBanner(props: GameBannerProps) {
-  const pathTitle = props.title.replace(/\s/g, '').toLowerCase();
-
+  // const pathTitle = props.title.replace(/\s/g, '').toLowerCase();
 
   return (
     <NavLink
-    to={`/games/${props.id}/ads`}
-  
+      to={`/games/${props.id}/ads`}
       className="relative rounded-lg overflow-hidden"
     >
       <img src={props.bannerUrl} alt="" />
@@ -30,6 +23,5 @@ export function GameBanner(props: GameBannerProps) {
         </span>
       </div>
     </NavLink>
-
   );
 }

@@ -3,156 +3,19 @@ import * as Dialog from '@radix-ui/react-dialog';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import { Input } from './Form/Input';
 import { Check, GameController } from 'phosphor-react';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { SelectInput } from './SelectInput';
-import { styled } from '@stitches/react';
-import { violet, mauve, blackA } from '@radix-ui/colors';
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-} from '@radix-ui/react-icons';
-import * as Select from '@radix-ui/react-select';
-
-const StyledTrigger = styled(Select.SelectTrigger, {
-  all: 'unset',
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  borderRadius: 4,
-  padding: '0 15px',
-  fontSize: 13,
-  lineHeight: 1,
-  height: 35,
-  gap: 5,
-  backgroundColor: 'white',
-  color: violet.violet11,
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
-  '&:hover': { backgroundColor: mauve.mauve3 },
-  '&:focus': { boxShadow: `0 0 0 2px black` },
-  // '&[data-placeholder]': { color: violet.violet9 },
-});
-
-const StyledIcon = styled(Select.SelectIcon, {
-  color: violet.violet11,
-});
-
-const StyledContent = styled(Select.Content, {
-  overflow: 'hidden',
-  backgroundColor: 'white',
-  borderRadius: 6,
-  boxShadow:
-    '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
-});
-
-const StyledViewport = styled(Select.Viewport, {
-  padding: 5,
-});
-
-function Content({ children, ...props }) {
-  return (
-    <Select.Portal>
-      <StyledContent {...props}>{children}</StyledContent>
-    </Select.Portal>
-  );
-}
-
-const StyledItem = styled(Select.Item, {
-  all: 'unset',
-  fontSize: 13,
-  lineHeight: 1,
-  color: violet.violet11,
-  borderRadius: 3,
-  display: 'flex',
-  alignItems: 'center',
-  height: 25,
-  padding: '0 35px 0 25px',
-  position: 'relative',
-  userSelect: 'none',
-
-  '&[data-disabled]': {
-    color: mauve.mauve8,
-    pointerEvents: 'none',
-  },
-
-  '&[data-highlighted]': {
-    backgroundColor: violet.violet9,
-    color: violet.violet1,
-  },
-});
-
-const StyledLabel = styled(Select.Label, {
-  padding: '0 25px',
-  fontSize: 12,
-  lineHeight: '25px',
-  color: mauve.mauve11,
-});
-
-const StyledSeparator = styled(Select.Separator, {
-  height: 1,
-  backgroundColor: violet.violet6,
-  margin: 5,
-});
-
-const StyledItemIndicator = styled(Select.ItemIndicator, {
-  position: 'absolute',
-  left: 0,
-  width: 25,
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-});
-
-const scrollButtonStyles = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: 25,
-  backgroundColor: 'white',
-  color: violet.violet11,
-  cursor: 'default',
-};
-
-const StyledScrollUpButton = styled(Select.ScrollUpButton, scrollButtonStyles);
-
-const StyledScrollDownButton = styled(
-  Select.ScrollDownButton,
-  scrollButtonStyles
-);
-
-// Exports
-export const Xelect = Select.Root;
-export const SelectTrigger = StyledTrigger;
-export const SelectValue = Select.Value;
-export const SelectIcon = StyledIcon;
-export const SelectContent = Content;
-export const SelectViewport = StyledViewport;
-export const SelectGroup = Select.Group;
-export const SelectItem = StyledItem;
-export const SelectItemText = Select.ItemText;
-export const SelectItemIndicator = StyledItemIndicator;
-export const SelectLabel = StyledLabel;
-export const SelectSeparator = StyledSeparator;
-export const SelectScrollUpButton = StyledScrollUpButton;
-export const SelectScrollDownButton = StyledScrollDownButton;
-
-interface Game {
-  id: string;
-  title: string;
-}
+import { GamesContext } from '../contexts/GamesContext';
 
 export function CreateAdModal() {
-  const [games, setGames] = useState<Game[]>([]);
+  const { games, listGames } = useContext(GamesContext);
+
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
 
   useEffect(() => {
-    axios(
-      'https://3333-edsongomesj-servernlwes-1lh39sgpi82.ws-us65.gitpod.io/games'
-    ).then((response) => {
-      setGames(response.data);
-    });
+    listGames();
   }, []);
 
   async function handleCreateAd(event: FormEvent) {
@@ -170,7 +33,7 @@ export function CreateAdModal() {
 
     try {
       await axios.post(
-        `https://3333-edsongomesj-servernlwes-1lh39sgpi82.ws-us65.gitpod.io/games/${data.game}/ads`,
+        `https://3333-edsongomesj-servernlwes-1lh39sgpi82.ws-us67.gitpod.io/games/${data.game}/ads`,
         {
           name: data.name,
           yearsPlaying: Number(data.yearsPlaying),
@@ -202,57 +65,6 @@ export function CreateAdModal() {
                 Qual o Game?
               </label>
               <SelectInput games={games} />
-              {/* <Xelect>
-                <SelectTrigger className="test" aria-label="Games">
-                  <SelectValue placeholder="Selecione o game que deseja jogar" />
-                  <SelectIcon>
-                    <ChevronDownIcon />
-                  </SelectIcon>
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectScrollUpButton>
-                    <ChevronUpIcon />
-                  </SelectScrollUpButton>
-                  <SelectViewport>
-                    <SelectGroup>
-                      <SelectLabel>
-                        Selecione o game que deseja jogar
-                      </SelectLabel>
-                      {games.map((game) => {
-                        return (
-                          <SelectItem key={game.id} value={game.title}>
-                            <SelectItemText>{game.title}</SelectItemText>
-                            <SelectItemIndicator>
-                              <CheckIcon />
-                            </SelectItemIndicator>
-                          </SelectItem>
-                        );
-                      })}
-                    </SelectGroup>
-                  </SelectViewport>
-                  <SelectScrollDownButton>
-                    <ChevronDownIcon />
-                  </SelectScrollDownButton>
-                </SelectContent>
-              </Xelect> */}
-
-              {/* <select
-                id="game"
-                name="game"
-                className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
-                defaultValue=""
-              >
-                <option disabled value="">
-                  Selecione o game que deseja jogar
-                </option>
-                {games.map((game) => {
-                  return (
-                    <option key={game.id} value={game.id}>
-                      {game.title}
-                    </option>
-                  );
-                })}
-              </select> */}
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="name">Seu nome (ou nickname)</label>
