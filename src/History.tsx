@@ -202,13 +202,13 @@ export function History() {
           </div>
         </>
       ) : (
-        <div className="flex items-center justify-center flex-col">
+        <div className="flex items-center  justify-center flex-col mt-[10rem]">
           <h1 className="font-black text-4xl text-white m-10">
             Ainda não recebemos anúncios para esse game...
           </h1>
-          <div className="flex items-center justify-center border-2 w-[480px] h-[480px] rounded-xl">
-            <div className=" pb-2 border-2 rounded-full ">
-              <Warning size={250} className="pb-5 " />
+          <div className="flex items-center justify-center border-2 w-[480px] h-[480px] rounded-xl bg-gradient-to-r from-[#9572FC] via-[#43E7AD] to-[#E1D55D]">
+            <div className=" pb-2 border-2 rounded-full bg-black ">
+              <Warning size={250} className="pb-5 text-yellow-600" />
             </div>
           </div>
         </div>
