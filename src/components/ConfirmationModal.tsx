@@ -60,7 +60,7 @@ export function ConfirmationModal() {
             Convite feito!
           </Dialog.DialogTitle>
 
-          <div className="mt-8 flex flex-col gap-4">
+          <div className="mt-8 flex flex-col gap-4  ">
             <div className="flex flex-col gap-2 items-center mt-2">
               <span className="font-black text-center text-2xl bg-gradient-to-r from-[#9572FC] via-[#43E7AD] to-[#E1D55D] bg-clip-text text-transparent ">
                 Agora é só aguardar o seu DUO

@@ -9,25 +9,17 @@
   input[type='time']::-webkit-calendar-picker-indicator {
     display: none;
     background: none;
+    -webkit-appearance: none;
+    margin: 0;
   }
 
-  .select-trigger[data-placeholder] {
-    color: #71717a;
-  }
-
-  .select-item[data-highlighted] {
-    background-color: #8b5cf6;
-    color: #ffff;
-  }
-
-  .select-item[data-disabled] {
-    color: #71717a;
-    pointer-events: none;
-  }
   .text-shadow {
     text-shadow: 1px 1px 2px black;
   }
 
+  .bg-image {
+    background-image: url('https://conteudo.imguol.com.br/c/noticias/e6/2022/09/13/nebulosa-orion-james-webb-1663083176089_v2_900x506.png');
+  }
   .text-gradient {
     background: -moz-linear-gradient(top, #e72c83 0%, #a742c6 100%);
     background: -webkit-linear-gradient(top, #e72c83 0%, #a742c6 100%);

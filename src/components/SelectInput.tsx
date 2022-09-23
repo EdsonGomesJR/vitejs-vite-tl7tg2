@@ -45,7 +45,7 @@ export function SelectInput(props: SelectInputProps) {
   return (
     <SelectPrimitive.Root>
       <SelectPrimitive.SelectTrigger
-        className="select-trigger flex items-center bg-zinc-900 justify-between py-3 px-3 rounded text-sm  hover:font-semibold transition-all "
+        className="[&[data-placeholder]]:text-zinc-500 flex items-center bg-zinc-900 justify-between py-3 px-3 rounded text-sm  hover:font-semibold transition-all "
         aria-label="Games"
       >
         <SelectPrimitive.Value placeholder="Selecione o game que deseja jogar" />
@@ -68,7 +68,7 @@ export function SelectInput(props: SelectInputProps) {
                 return (
                   <SelectPrimitive.Item
                     className="
-                    select-item select-none rounded-sm text-md
+                    [&[data-highlighted]]:bg-[#8b5cf6] [&[data-state=checked]]:bg-violet-400 [&[data-highlighted]]:text-white [&[data-state=checked]]:text-white rounded-sm text-md select-none
                     text-zinc-300 flex items-center h-[25px] pr-[35px] pl-[25px]
                       relative "
                     key={game.id}
