@@ -30,6 +30,7 @@ export function History() {
   const [loading, setLoading] = useState(true);
 
   console.log('os game', games);
+
   useEffect(() => {
     listGames();
     axios(
