@@ -8,6 +8,7 @@ import axios from 'axios';
 import { SelectInput } from './SelectInput';
 import { GamesContext } from '../contexts/GamesContext';
 import { NavLink } from 'react-router-dom';
+import { BASE_URL } from '../utils/baseUrl';
 
 export function ConfirmationModal() {
   const { games, listGames } = useContext(GamesContext);
@@ -33,18 +34,15 @@ export function ConfirmationModal() {
     }
 
     try {
-      await axios.post(
-        `https://3333-edsongomesj-servernlwes-1lh39sgpi82.ws-us67.gitpod.io/games/${data.game}/ads`,
-        {
-          name: data.name,
-          yearsPlaying: Number(data.yearsPlaying),
-          discord: data.discord,
-          weekDays: weekDays.map(Number), //converte pra number
-          useVoiceChannel: useVoiceChannel,
-          hourStart: data.hourStart,
-          hourEnd: data.hourEnd,
-        }
-      );
+      await axios.post(`${BASE_URL}/games/${data.game}/ads`, {
+        name: data.name,
+        yearsPlaying: Number(data.yearsPlaying),
+        discord: data.discord,
+        weekDays: weekDays.map(Number), //converte pra number
+        useVoiceChannel: useVoiceChannel,
+        hourStart: data.hourStart,
+        hourEnd: data.hourEnd,
+      });
       alert('Anuncio criado com sucesso!');
     } catch (err) {
       alert('Erro ao criar o anúncio!');

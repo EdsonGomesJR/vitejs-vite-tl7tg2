@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createContext, ReactNode, useState } from 'react';
+import { BASE_URL } from '../utils/baseUrl';
 
 interface Game {
   id: string;
@@ -24,9 +25,7 @@ export function GamesContextProvider({ children }: GamesContextProviderProps) {
   const [games, setGames] = useState<Game[]>([]);
 
   function listGames() {
-    axios(
-      'https://3333-edsongomesj-servernlwes-1lh39sgpi82.ws-us67.gitpod.io/games'
-    ).then((response) => {
+    axios(`${BASE_URL}/games`).then((response) => {
       setGames(response.data);
     });
 
