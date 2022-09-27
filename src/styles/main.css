@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,5 +29,47 @@
     -moz-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  /* Position the front and back side */
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+
+  .card {
+    transform-style: preserve-3d;
+
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0))
+      translateY(var(--translate-y, 0));
+  }
+
+  .card:hover {
+    --translate-y: -2px;
+  }
+
+  .card.flip {
+    --rotate-y: 180deg;
+  }
+
+  .card .front {
+    /* inset: 6px; */
+  }
+  .card .back {
+    /* inset: 6px; */
+  }
+
+  .card .front,
+  .card .back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .card .back {
+    transform: rotateY(180deg);
   }
 }

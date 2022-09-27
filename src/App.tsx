@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { ClickFlipCard } from './components/ClickFlipCard';
 import { GamesContextProvider } from './contexts/GamesContext';
 
 import { Router } from './Router';

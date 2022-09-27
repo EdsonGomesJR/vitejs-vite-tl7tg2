@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
+      pmarker: ['SUPER PUNCH', 'sans-serif'],
     },
     extend: {
       backgroundImage: {

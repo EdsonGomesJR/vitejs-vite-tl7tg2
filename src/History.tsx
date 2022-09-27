@@ -6,12 +6,12 @@ import * as Dialog from '@radix-ui/react-dialog';
 
 import { GamesContext } from './contexts/GamesContext';
 import { ToastButton } from './components/ToastButton';
-import { CreateAdModal } from './components/CreateAdModal';
 import { ConfirmationModal } from './components/ConfirmationModal';
 import { Warning } from 'phosphor-react';
 import { Xelect } from '../Xelect';
 import { Loading } from './components/Loading';
 import { BASE_URL } from './utils/baseUrl';
+import { ClickFlipCard } from './components/ClickFlipCard';
 
 interface Ads {
   id: string;
@@ -72,13 +72,23 @@ export function History() {
             <div className="p-2 flex  gap-8">
               {ads.map((ad) => {
                 return (
-                  <div
+                  <div key={ad.id}>
+                    <ClickFlipCard
+                      id={ad.id}
+                      hourEnd={ad.hourEnd}
+                      hourStart={ad.hourStart}
+                      name={ad.name}
+                      useVoiceChannel={ad.useVoiceChannel}
+                      weekDays={ad.weekDays}
+                      yearsPlaying={ad.yearsPlaying}
+                    />
+                    {/* <div
                     key={ad.id}
-                    className="p-1 rounded bg-gradient-to-r from-[#9572FC] via-[#43E7AD] to-[#E1D55D] "
+                    className={`p-1 rounded bg-gradient-to-r from-[#9572FC] via-[#43E7AD] to-[#E1D55D] `}
                   >
                     <div className="bg-gradient-to-br from-zinc-900 via-zinc-700 to-zinc-500 rounded p-4">
                       <div className="flex flex-col text-white gap-2">
-                        <span className="bg-violet-700 font-black rounded p-2 text-center">
+                        <span className="font-pmarker text-xl  bg-violet-700 font-black rounded p-2 text-center">
                           {ad.name}
                         </span>
                         <div className="flex justify-between font-bold">
@@ -89,94 +99,9 @@ export function History() {
                           </span>
                         </div>
 
-                        <span>{ad.discord} </span>
                         <div className="flex flex-col items-center gap-2 font-semibold">
                           Dias da Semana{' '}
-                          <div className=" flex items-center">
-                            <ToggleGroup.Root
-                              type="multiple"
-                              className="flex gap-2"
-                              value={ad.weekDays}
-                            >
-                              <ToggleGroup.Item
-                                value="0"
-                                title="Domingo"
-                                className={`w-8 h-8 rounded  ${
-                                  ad.weekDays.includes('0')
-                                    ? 'bg-violet-500'
-                                    : 'bg-zinc-500'
-                                }`}
-                              >
-                                D
-                              </ToggleGroup.Item>
-                              <ToggleGroup.Item
-                                value="1"
-                                title="Segunda"
-                                className={`w-8 h-8 rounded  ${
-                                  ad.weekDays.includes('1')
-                                    ? 'bg-violet-500'
-                                    : 'bg-zinc-500'
-                                }`}
-                              >
-                                S
-                              </ToggleGroup.Item>
-                              <ToggleGroup.Item
-                                value="2"
-                                title="Terça"
-                                className={`w-8 h-8 rounded  ${
-                                  ad.weekDays.includes('2')
-                                    ? 'bg-violet-500'
-                                    : 'bg-zinc-500'
-                                }`}
-                              >
-                                T
-                              </ToggleGroup.Item>
-                              <ToggleGroup.Item
-                                value="3"
-                                title="Quarta"
-                                className={`w-8 h-8 rounded  ${
-                                  ad.weekDays.includes('3')
-                                    ? 'bg-violet-500'
-                                    : 'bg-zinc-500'
-                                }`}
-                              >
-                                Q
-                              </ToggleGroup.Item>
-                              <ToggleGroup.Item
-                                value="4"
-                                title="Quinta"
-                                className={`w-8 h-8 rounded  ${
-                                  ad.weekDays.includes('4')
-                                    ? 'bg-violet-500'
-                                    : 'bg-zinc-500'
-                                }`}
-                              >
-                                Q
-                              </ToggleGroup.Item>
-                              <ToggleGroup.Item
-                                value="5"
-                                title="Sexta"
-                                className={`w-8 h-8 rounded  ${
-                                  ad.weekDays.includes('5')
-                                    ? 'bg-violet-500'
-                                    : 'bg-zinc-500'
-                                }`}
-                              >
-                                S
-                              </ToggleGroup.Item>
-                              <ToggleGroup.Item
-                                value="6"
-                                title="Sábado"
-                                className={`w-8 h-8 rounded  ${
-                                  ad.weekDays.includes('6')
-                                    ? 'bg-violet-500'
-                                    : 'bg-zinc-500'
-                                }`}
-                              >
-                                S
-                              </ToggleGroup.Item>
-                            </ToggleGroup.Root>
-                          </div>
+                          
                         </div>
                         <div className=" flex items-center justify-between font-semibold ">
                           <span> Usa o discord? </span>
@@ -208,6 +133,7 @@ export function History() {
                         </Dialog.Root>
                       </div>
                     </div>
+                  </div> */}
                   </div>
                 );
               })}
