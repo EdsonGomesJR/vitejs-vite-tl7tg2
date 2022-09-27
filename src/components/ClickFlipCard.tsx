@@ -29,7 +29,7 @@ export function ClickFlipCard(props: Ads) {
         <div className="front absolute flex  flex-col items-center  justify-center border-[6px] rounded border-zinc-900 inset-[6px] gap-2">
           <div className="absolute top-[0] text-violet-700 p-2 rounded-xl right-[10px]  font-black">
             {' '}
-            AD#5256
+            AD #{props.id.substring(0, 4).toLocaleUpperCase()}
           </div>
           <div className="border-4 border-violet-700 p-1 rounded-full">
             <div className="flex items-center  justify-center p-[0.10rem] rounded-full bg-violet-500">
@@ -48,7 +48,7 @@ export function ClickFlipCard(props: Ads) {
           <div className="flex flex-col pt-4">
             <span className="text-xl text-shadow font-semibold">
               {' '}
-              Experiência
+              Tempo jogando
             </span>
             <div className="font-black text-[3rem] leading-none text-center  text-shadow">
               {props.yearsPlaying}
@@ -58,20 +58,14 @@ export function ClickFlipCard(props: Ads) {
             </span>
           </div>
         </div>
-        <div className="back absolute bg-gradient-to-br inset-[6px] from-zinc-900 via-zinc-700 to-zinc-500  rounded p-4">
-          <div className="flex flex-col text-white gap-2">
-            <span className="font-pmarker text-xl  bg-violet-700 font-black rounded p-2 text-center">
-              {props.name}
+        <div className="back absolute bg-gradient-to-br inset-[6px] from-zinc-900 via-zinc-700 to-zinc-500   rounded p-4">
+          <div className="flex flex-col text-white gap-4">
+            <span className="font-pmarker text-xl  bg-violet-700 font-semibold rounded p-2 text-center">
+              Detalhes
             </span>
-            <div className="flex justify-between font-bold mb-1">
-              <span> Há quanto tempo joga:</span>
-              <span>
-                {props.yearsPlaying}
-                {props.yearsPlaying <= 1 ? ' ano' : ' anos'}
-              </span>
-            </div>
+
             <div className="flex flex-col items-center gap-2 font-semibold">
-              Dias da Semana{' '}
+              Dias da Semana que Joga:
               <div className=" flex items-center p-2">
                 <div className=" flex items-center">
                   <ToggleGroup.Root
@@ -169,11 +163,11 @@ export function ClickFlipCard(props: Ads) {
               </span>
             </div>
             <div className="flex justify-between font-semibold">
-              <span> Começa a jogar às </span>
+              <span> Começa a jogar às: </span>
               <span>{props.hourStart}h</span>
             </div>
             <div className="flex justify-between font-semibold">
-              <span> Parando às </span>
+              <span> Parando às: </span>
               <span>{props.hourEnd}h</span>
             </div>
             <Dialog.Root>
