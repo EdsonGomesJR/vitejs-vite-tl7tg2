@@ -1,14 +1,8 @@
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import * as ToggleGroup from '@radix-ui/react-toggle-group';
-import * as Dialog from '@radix-ui/react-dialog';
-
 import { GamesContext } from './contexts/GamesContext';
-import { ToastButton } from './components/ToastButton';
-import { ConfirmationModal } from './components/ConfirmationModal';
 import { Warning } from 'phosphor-react';
-import { Xelect } from '../Xelect';
 import { Loading } from './components/Loading';
 import { BASE_URL } from './utils/baseUrl';
 import { ClickFlipCard } from './components/ClickFlipCard';
@@ -69,7 +63,7 @@ export function History() {
             }
           })}
           {hasAds && !loading ? (
-            <div className="p-2 flex  gap-8">
+            <div className="p-2 flex mobile:flex-col mobile:gap-2 mobile:items-center gap-8">
               {ads.map((ad) => {
                 return (
                   <div key={ad.id}>

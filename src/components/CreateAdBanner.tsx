@@ -6,7 +6,7 @@ export function CreateAdBanner() {
     <>
       <div className="pt-1  self-stretch bg-gradient-to-r from-[#9572FC] via-[#43E7AD] to-[#E1D55D] mt-8  rounded-t-lg overflow-hidden "></div>
 
-      <div className="flex justify-between items-center bg-[#2A2634] px-8 py-6 rounded-b-lg self-stretch ">
+      <div className="flex justify-between items-center bg-[#2A2634] px-8 py-6 rounded-b-lg self-stretch mobile:flex-col mobile:text-center  ">
         <div>
           <strong className="block text-white text-2xl font-black">
             {' '}

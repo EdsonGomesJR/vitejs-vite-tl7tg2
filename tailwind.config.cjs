@@ -2,6 +2,10 @@
 module.exports = {
   content: ['./src/**/*.tsx', './index.html'],
   theme: {
+    screens: {
+      mobile: { max: '640px' },
+      // => @media (min-width: 640px) { ... }
+    },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
       pmarker: ['SUPER PUNCH', 'sans-serif'],
