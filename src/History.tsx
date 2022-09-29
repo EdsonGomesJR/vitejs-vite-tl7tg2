@@ -51,7 +51,7 @@ export function History() {
             if (id === game.id) {
               return (
                 <div key={game.id}>
-                  <p className="text-center text-3xl text-white m-10">
+                  <p className="text-center text-3xl text-white m-10 mobile:mb-7">
                     Estes são os anúncios para:{' '}
                   </p>
                   <h1 className="text-6xl text-center text-white font-black">
@@ -63,12 +63,15 @@ export function History() {
             }
           })}
           {hasAds && !loading ? (
-            <div className="p-2 flex items-center mobile:flex-col mobile:gap-2 mobile:items-center gap-8">
+            <div
+              className="p-2 flex items-center gap-8 
+            mobile:flex-col mobile:gap-0 mobile:items-center mobile:p-2 "
+            >
               {ads.map((ad) => {
                 return (
                   <div
                     key={ad.id}
-                    className="flex items-center justify-center "
+                    className="flex items-center justify-center  "
                   >
                     <ClickFlipCard
                       id={ad.id}

@@ -53,27 +53,25 @@ export function CreateAdModal() {
     <Dialog.Portal className="">
       <Dialog.Overlay className="bg-black/60 inset-0 fixed  ">
         <Dialog.DialogContent
-          className="fixed bg-[#2a2634] py-8 px-10  
+          className="fixed bg-[#2a2634] py-4 px-8  
           text-white 
           top-1/2 left-1/2 
           -translate-x-1/2 
           -translate-y-1/2 
           rounded-lg 
-          w-[480px] 
+          w-[18rem]
           shadow-lg 
+          xl:w-[30rem]
           shadow-black/25
-         
-          mobile:w-[90%]
-          mobile:mr-2
         "
         >
-          <Dialog.DialogTitle className="text-3xl font-black mobile:text-2xl">
+          <Dialog.DialogTitle className="xl:text-3xl font-black text-xl text-center">
             Publique um anúncio
           </Dialog.DialogTitle>
 
           <form
             onSubmit={handleCreateAd}
-            className="mt-8 flex flex-col gap-4 mobile:mt-4"
+            className="xl:mt-8 flex flex-col xl:gap-4 text-sm gap-1 mt-4 "
           >
             <div className="flex flex-col gap-2">
               <label htmlFor="game" className="font-semibold">
@@ -90,7 +88,7 @@ export function CreateAdModal() {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="xl:grid xl:grid-cols-2 xl:gap-6 flex flex-col gap-2">
               <div className="flex flex-col gap-2">
                 <label htmlFor="yearsPlaying">Joga há quantos anos?</label>
                 <Input
@@ -110,20 +108,20 @@ export function CreateAdModal() {
                 />
               </div>
             </div>
-            <div className="flex gap-6">
-              <div className="flex flex-col gap-2">
+            <div className="flex xl:gap-6 gap-2 flex-col ">
+              <div className="flex flex-col gap-2 ">
                 <label htmlFor="weekDays">Quando costuma jogar?</label>
 
                 <ToggleGroup.Root
                   type="multiple"
-                  className="grid grid-cols-4 gap-2"
+                  className="xl:grid xl:grid-cols-4 xl:gap-2  flex items-center gap-1"
                   value={weekDays}
                   onValueChange={setWeekDays}
                 >
                   <ToggleGroup.Item
                     value="0"
                     title="Domingo"
-                    className={`w-8 h-8 rounded  ${
+                    className={`w-8 h-8 rounded  mobile:w-full ${
                       weekDays.includes('0') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -132,7 +130,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="1"
                     title="Segunda"
-                    className={`w-8 h-8 rounded  ${
+                    className={`w-8 h-8 rounded  mobile:w-full  ${
                       weekDays.includes('1') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -141,7 +139,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="2"
                     title="Terça"
-                    className={`w-8 h-8 rounded  ${
+                    className={`w-8 h-8 rounded  mobile:w-full  ${
                       weekDays.includes('2') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -150,7 +148,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="3"
                     title="Quarta"
-                    className={`w-8 h-8 rounded  ${
+                    className={`w-8 h-8 rounded  mobile:w-full  ${
                       weekDays.includes('3') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -159,7 +157,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="4"
                     title="Quinta"
-                    className={`w-8 h-8 rounded  ${
+                    className={`w-8 h-8 rounded  mobile:w-full   ${
                       weekDays.includes('4') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -168,7 +166,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="5"
                     title="Sexta"
-                    className={`w-8 h-8 rounded  ${
+                    className={`w-8 h-8 rounded  mobile:w-full  ${
                       weekDays.includes('5') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -177,7 +175,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="6"
                     title="Sábado"
-                    className={`w-8 h-8 rounded  ${
+                    className={`w-8 h-8 rounded  mobile:w-full  ${
                       weekDays.includes('6') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -223,16 +221,18 @@ export function CreateAdModal() {
               Costumo me conectar ao chat de voz
             </label>
 
-            <footer className="mt-4 flex justify-end gap-4">
+            <footer className="mt-4 flex justify-end gap-4 mobile:justify-center mobile:gap-3 ">
               <Dialog.Close
-                className="bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600"
+                className="bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600
+                mobile:px-4 mobile:h-10 "
                 type="button"
               >
                 Cancelar
               </Dialog.Close>
               <button
                 type="submit"
-                className="flex gap-3  items-center bg-violet-500 px-5 h-12 rounded-md font-semibold hover:bg-violet-600 "
+                className="flex gap-3  items-center bg-violet-500 px-5 h-12 rounded-md font-semibold hover:bg-violet-600 
+                mobile:gap-2 mobile:px-4 mobile:h-10  "
               >
                 <GameController className="w-6 h-6" />
                 Encontrar duo

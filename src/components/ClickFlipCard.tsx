@@ -17,16 +17,16 @@ interface Ads {
 }
 export function ClickFlipCard(props: Ads) {
   const [flip, setFlip] = useState(false);
-  const matches = useMediaQuery('(min-width: 640px)');
+  const matches = useMediaQuery('(min-width: 320px)');
 
   return (
-    <div className="flex p-2 ">
+    <div className="flex p-2 bg-pink-700">
       <div
         // Card
         className={`card relative flex min-w-[20rem] min-h-[25rem] items-center justify-center
           rounded duration-150 cursor-pointer  
           p-1 bg-gradient-to-r from-[#9572FC] via-[#43E7AD] to-[#E1D55D]
-          mobile:min-h-[12rem] mobile:mb-1
+          mobile:min-h-[12rem] mobile:mb-1 mobile:min-w-[20rem]
           
           
           
@@ -151,7 +151,7 @@ export function ClickFlipCard(props: Ads) {
                     <ToggleGroup.Item
                       value="4"
                       title="Quinta"
-                      className={`w-8 h-8 rounded         mobile:w-full 
+                      className={`w-8 h-8 rounded  mobile:w-full 
                       mobile:p-2 
                       mobile:flex 
                       mobile:items-center mobile:justify-center ${

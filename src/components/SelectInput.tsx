@@ -55,6 +55,8 @@ export function SelectInput(props: SelectInputProps) {
           text-sm  
           hover:font-semibold 
           transition-all 
+          mobile:py-2
+          mobile:px-2
           "
         aria-label="Games"
       >
@@ -73,7 +75,7 @@ export function SelectInput(props: SelectInputProps) {
           </SelectScrollUpButton>
           <SelectPrimitive.Viewport className="p-[2px] bg-zinc-600 ">
             <SelectPrimitive.Group className="bg-zinc-900 ">
-              <SelectPrimitive.Label className=" px-[25px] py-[0.5px] text-sm border-b  leading-[25px] text-zinc-500 border-zinc-100/20">
+              <SelectPrimitive.Label className=" px-[25px] py-[0.5px] text-sm border-b  leading-[25px] text-zinc-500 border-zinc-100/20 ">
                 Selecione o game que deseja jogar
               </SelectPrimitive.Label>
               {props.games.map((game) => {
@@ -81,8 +83,8 @@ export function SelectInput(props: SelectInputProps) {
                   <SelectPrimitive.Item
                     className="
                     [&[data-highlighted]]:bg-[#8b5cf6] [&[data-state=checked]]:bg-violet-400 [&[data-highlighted]]:text-white [&[data-state=checked]]:text-white rounded-sm text-md select-none
-                    text-zinc-300 flex items-center h-[25px] pr-[35px] pl-[25px]
-                      relative "
+                    text-zinc-300 flex items-center h-[1.6rem] pr-[2.2rem] pl-[1.6rem]
+                      relative mobile:text-sm mobile:font-semibold"
                     key={game.id}
                     value={game.title}
                   >

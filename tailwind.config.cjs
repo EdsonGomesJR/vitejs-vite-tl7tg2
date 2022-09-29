@@ -2,10 +2,22 @@
 module.exports = {
   content: ['./src/**/*.tsx', './index.html'],
   theme: {
-    screens: {
-      mobile: { max: '640px' },
-      // => @media (min-width: 640px) { ... }
-    },
+    // screens: {
+    //   // mobile: { raw: '(max-height: 760px),(min-width:320px)' },
+    //   //       @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }
+    //   mobile: { min: '320px' },
+    //   xl: { min: '320px' },
+    //   mobile: { min: '320px' },
+    //   mobile: { min: '320px' },
+    //   mobile: { min: '320px' },
+    //   mobile: { min: '320px' },
+
+    //   // @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+    //   // @media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+    //   // @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+    //   // @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+    //   // @media (min-width:1281px) { /* hi-res laptops and desktops */ }
+    // },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
       pmarker: ['SUPER PUNCH', 'sans-serif'],
