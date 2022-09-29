@@ -52,12 +52,29 @@ export function CreateAdModal() {
   return (
     <Dialog.Portal className="">
       <Dialog.Overlay className="bg-black/60 inset-0 fixed  ">
-        <Dialog.DialogContent className="fixed bg-[#2a2634] py-8 px-10  mobile:w-[calc(80%-2rem)] mobile:h-[calc(95%-2rem)] text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25 ">
-          <Dialog.DialogTitle className="text-3xl font-black">
+        <Dialog.DialogContent
+          className="fixed bg-[#2a2634] py-8 px-10  
+          text-white 
+          top-1/2 left-1/2 
+          -translate-x-1/2 
+          -translate-y-1/2 
+          rounded-lg 
+          w-[480px] 
+          shadow-lg 
+          shadow-black/25
+         
+          mobile:w-[90%]
+          mobile:mr-2
+        "
+        >
+          <Dialog.DialogTitle className="text-3xl font-black mobile:text-2xl">
             Publique um anúncio
           </Dialog.DialogTitle>
 
-          <form onSubmit={handleCreateAd} className="mt-8 flex flex-col gap-4">
+          <form
+            onSubmit={handleCreateAd}
+            className="mt-8 flex flex-col gap-4 mobile:mt-4"
+          >
             <div className="flex flex-col gap-2">
               <label htmlFor="game" className="font-semibold">
                 Qual o Game?

@@ -63,10 +63,13 @@ export function History() {
             }
           })}
           {hasAds && !loading ? (
-            <div className="p-2 flex mobile:flex-col mobile:gap-2 mobile:items-center gap-8">
+            <div className="p-2 flex items-center mobile:flex-col mobile:gap-2 mobile:items-center gap-8">
               {ads.map((ad) => {
                 return (
-                  <div key={ad.id}>
+                  <div
+                    key={ad.id}
+                    className="flex items-center justify-center "
+                  >
                     <ClickFlipCard
                       id={ad.id}
                       hourEnd={ad.hourEnd}

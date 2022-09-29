@@ -45,10 +45,22 @@ export function SelectInput(props: SelectInputProps) {
   return (
     <SelectPrimitive.Root>
       <SelectPrimitive.SelectTrigger
-        className="[&[data-placeholder]]:text-zinc-500 flex items-center bg-zinc-900 justify-between py-3 px-3 rounded text-sm  hover:font-semibold transition-all "
+        className="[&[data-placeholder]]:text-zinc-500 
+          flex 
+          items-center 
+          bg-zinc-900 
+          justify-between 
+          py-3 px-3 
+          rounded 
+          text-sm  
+          hover:font-semibold 
+          transition-all 
+          "
         aria-label="Games"
       >
-        <SelectPrimitive.Value placeholder="Selecione o game que deseja jogar" />
+        <p className="truncate">
+          <SelectPrimitive.Value placeholder="Selecione o game que deseja jogar" />
+        </p>
         <SelectPrimitive.SelectIcon>
           <ChevronDownIcon height={20} width={20} />
         </SelectPrimitive.SelectIcon>
