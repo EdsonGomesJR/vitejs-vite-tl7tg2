@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://slept-hard.codedamn.app:1337';
+export const BASE_URL = 'https://direction-tonight.codedamn.app:1337';

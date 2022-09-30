@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createContext, ReactNode, useState } from 'react';
-import { api } from '../services.api';
+import { api } from '../../services.api';
 import { BASE_URL } from '../utils/baseUrl';
 
 interface Game {
@@ -25,13 +25,15 @@ export const GamesContext = createContext({} as GamesContextType);
 export function GamesContextProvider({ children }: GamesContextProviderProps) {
   const [games, setGames] = useState<Game[]>([]);
 
-  function listGames() {
-    
-    axios(`${BASE_URL}/games`).then((response) => {
-      setGames(response.data);
-    });
+  async function listGames() {
+    // axios(`${BASE_URL}/games`).then((response) => {
+    //   setGames(response.data);
+    // });
 
-    console.log('ListGames : renderizei do context', games);
+    const response = await api.get('/games');
+    setGames(response.data);
+
+    console.log('ListGames : renderizei do context', response.data);
   }
 
   return (

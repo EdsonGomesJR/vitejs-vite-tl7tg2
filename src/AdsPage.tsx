@@ -6,6 +6,7 @@ import { Warning } from 'phosphor-react';
 import { Loading } from './components/Loading';
 import { BASE_URL } from './utils/baseUrl';
 import { ClickFlipCard } from './components/Card/ClickFlipCard';
+import { api } from '../services.api';
 
 interface Ads {
   id: string;
@@ -32,15 +33,18 @@ export function AdsPage() {
         setLoading(false);
       }
     });
-    axios(`${BASE_URL}/games/${id}/ads`).then((response) => {
-      setAds(response.data);
-    });
+
+    loadAds();
 
     setTimeout(() => {
       setLoading(false);
     }, 2500);
   }, [loading]);
 
+  async function loadAds() {
+    const response = await api.get(`/games/${id}/ads`);
+    setAds(response.data);
+  }
   return (
     <>
       {loading ? (
