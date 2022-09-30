@@ -53,7 +53,20 @@ export function ConfirmationModal() {
   return (
     <Dialog.Portal>
       <Dialog.Overlay className="bg-black/60 inset-0 fixed ">
-        <Dialog.DialogContent className="fixed bg-[#2a2634] py-10 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25 mobile:w-[18rem] mobile:px-6 mobile:py-8">
+        <Dialog.DialogContent
+          className="
+            fixed bg-[#2a2634] 
+            xl:py-10 xl:px-10
+            text-white 
+            top-1/2 left-1/2 
+            -translate-x-1/2 -translate-y-1/2 
+            rounded-lg 
+            xl:w-[30rem] 
+            shadow-lg shadow-black/25 
+            w-[23rem] 
+            px-6 
+            py-8"
+        >
           <Dialog.DialogTitle className="text-3xl text-center font-black">
             Convite feito!
           </Dialog.DialogTitle>
@@ -71,7 +84,7 @@ export function ConfirmationModal() {
             <footer className="mt-4 flex justify-center  gap-4">
               <NavLink to="/">
                 <Dialog.Close
-                  className="bg-violet-500 px-5 h-12 rounded-md font-semibold hover:bg-violet-600"
+                  className="bg-violet-500 px-5 h-12 rounded-md font-semibold w-[10rem]   hover:bg-violet-600"
                   type="button"
                 >
                   Ok

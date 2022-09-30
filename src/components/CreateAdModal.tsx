@@ -53,13 +53,13 @@ export function CreateAdModal() {
     <Dialog.Portal className="">
       <Dialog.Overlay className="bg-black/60 inset-0 fixed  ">
         <Dialog.DialogContent
-          className="fixed bg-[#2a2634] py-4 px-8  
+          className="fixed bg-[#2a2634] py-6 px-8  
           text-white 
           top-1/2 left-1/2 
           -translate-x-1/2 
           -translate-y-1/2 
           rounded-lg 
-          w-[18rem]
+          w-[22rem]
           shadow-lg 
           xl:w-[30rem]
           shadow-black/25

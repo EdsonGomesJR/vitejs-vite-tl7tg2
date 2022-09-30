@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createContext, ReactNode, useState } from 'react';
+import { api } from '../services.api';
 import { BASE_URL } from '../utils/baseUrl';
 
 interface Game {
@@ -25,6 +26,7 @@ export function GamesContextProvider({ children }: GamesContextProviderProps) {
   const [games, setGames] = useState<Game[]>([]);
 
   function listGames() {
+    
     axios(`${BASE_URL}/games`).then((response) => {
       setGames(response.data);
     });

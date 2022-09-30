@@ -17,12 +17,12 @@ export function Home() {
 
   return (
     <div
-      className="xl:max-w-[84rem] mx-auto flex flex-col items-center p-2 my-20 
+      className="xl:max-w-[84rem] mx-auto flex flex-col items-center p-2 xl:p-8 xl:my-20   my-4 
      w-full "
     >
       <img src={logoImg} alt="" />
       <h1
-        className="text-5xl text-white font-black mt-5 
+        className="text-5xl text-white  xl:text-6xl font-black mt-5 
      text-center "
       >
         Seu{' '}
@@ -32,7 +32,7 @@ export function Home() {
         está aqui.
       </h1>
       <div
-        className="grid mt-10 grid-cols-2 gap-4
+        className="grid mt-10 grid-cols-2 gap-4 xl:gap-8
         xl:grid-cols-6 
         md:grid-cols-3
       "
