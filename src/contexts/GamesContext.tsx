@@ -25,15 +25,15 @@ export const GamesContext = createContext({} as GamesContextType);
 export function GamesContextProvider({ children }: GamesContextProviderProps) {
   const [games, setGames] = useState<Game[]>([]);
 
-  async function listGames() {
-    // axios(`${BASE_URL}/games`).then((response) => {
-    //   setGames(response.data);
-    // });
+  function listGames() {
+    axios(`${BASE_URL}/games`).then((response) => {
+      setGames(response.data);
+    });
 
-    const response = await api.get('/games');
-    setGames(response.data);
+    // const response = await api.get('/games');
+    // setGames(response.data);
 
-    console.log('ListGames : renderizei do context', response.data);
+    // console.log('ListGames : renderizei do context', response.data);
   }
 
   return (

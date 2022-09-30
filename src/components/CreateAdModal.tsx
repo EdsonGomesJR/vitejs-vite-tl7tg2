@@ -24,9 +24,9 @@ export function CreateAdModal() {
     const formData = new FormData(event.target as HTMLFormElement);
 
     const data = Object.fromEntries(formData);
-    // console.log(data);
-    // console.log(weekDays);
-    // console.log(useVoiceChannel);
+    console.log(data);
+    console.log(weekDays);
+    console.log(useVoiceChannel);
 
     if (!data.name) {
       return;
@@ -53,13 +53,13 @@ export function CreateAdModal() {
     <Dialog.Portal className="">
       <Dialog.Overlay className="bg-black/60 inset-0 fixed  ">
         <Dialog.DialogContent
-          className="fixed bg-[#2a2634] py-6 px-8  
+          className="fixed bg-[#2a2634] py-4 px-8  
           text-white 
           top-1/2 left-1/2 
           -translate-x-1/2 
           -translate-y-1/2 
           rounded-lg 
-          w-[22rem]
+          w-[18rem]
           shadow-lg 
           xl:w-[30rem]
           shadow-black/25
@@ -77,7 +77,24 @@ export function CreateAdModal() {
               <label htmlFor="game" className="font-semibold">
                 Qual o Game?
               </label>
-              <SelectInput games={games} />
+              {/* <SelectInput games={games} /> */}
+                <select
+                id="game"
+                name="game"
+                className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
+                defaultValue=""
+              >
+                <option disabled value="">
+                  Selecione o game que deseja jogar
+                </option>
+                {games.map((game) => {
+                  return (
+                    <option key={game.id} value={game.id}>
+                      {game.title}
+                    </option>
+                  );
+                })}
+              </select> 
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="name">Seu nome (ou nickname)</label>
