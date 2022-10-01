@@ -77,7 +77,7 @@ export function CreateAdModal() {
               <label htmlFor="game" className="font-semibold">
                 Qual o Game?
               </label>
-              {/* <SelectInput games={games} /> */}
+              <SelectInput games={games} />
                 <select
                 id="game"
                 name="game"

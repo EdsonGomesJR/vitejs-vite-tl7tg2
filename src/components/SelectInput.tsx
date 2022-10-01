@@ -86,7 +86,7 @@ export function SelectInput(props: SelectInputProps) {
                     text-zinc-300 flex items-center h-[1.6rem] pr-[2.2rem] pl-[1.6rem]
                       relative mobile:text-sm mobile:font-semibold"
                     key={game.id}
-                    value={game.title}
+                    value={game.id}
                   >
                     <SelectPrimitive.ItemText className="">
                       {game.title}
