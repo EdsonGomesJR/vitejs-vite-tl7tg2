@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://town-back.codedamn.app:1337';
+export const BASE_URL = 'https://rocket-blow.codedamn.app:1337';

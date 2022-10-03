@@ -8,32 +8,72 @@ import axios from 'axios';
 import { SelectInput } from './SelectInput';
 import { GamesContext } from '../contexts/GamesContext';
 import { BASE_URL } from '../utils/baseUrl';
+import { Select } from './Select';
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+} from '@radix-ui/react-icons';
+import { api } from '../../services.api';
+import * as SelectPrimitive from '@radix-ui/react-select';
+import { useNavigate } from 'react-router-dom';
+
+export type GameBannerResponse = {
+  id: string;
+  bannerUrl: string;
+  title: string;
+  _count: {
+    ads: number;
+  };
+};
+
+export type Game = {
+  id: string;
+  title: string;
+  bannerUrl: string;
+};
+
+export interface Ad {
+  game: string;
+  discord: string;
+  hourStart: string;
+  hourEnd: string;
+  name: string;
+  useVoiceChannel: boolean;
+  weekDays: string[];
+  yearsPlaying: number;
+}
 
 export function CreateAdModal() {
+  const navigate = useNavigate();
+
   const { games, listGames } = useContext(GamesContext);
+  const [gameId, setGameId] = useState('');
+  const [closeModal, setCloseModal] = useState(false);
 
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
 
   useEffect(() => {
     listGames();
-  }, []);
+  }, [closeModal]);
 
   async function handleCreateAd(event: FormEvent) {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
 
     const data = Object.fromEntries(formData);
-    console.log(data);
+    console.log('data ->', data.game);
     console.log(weekDays);
     console.log(useVoiceChannel);
+    // window.location.reload();
 
     if (!data.name) {
       return;
     }
 
     try {
-      await axios.post(`${BASE_URL}/games/${data.game}/ads`, {
+      await api.post(`/games/${data.game}/ads`, {
         name: data.name,
         yearsPlaying: Number(data.yearsPlaying),
         discord: data.discord,
@@ -43,6 +83,7 @@ export function CreateAdModal() {
         hourEnd: data.hourEnd,
       });
       alert('Anuncio criado com sucesso!');
+      navigate(0);
     } catch (err) {
       alert('Erro ao criar o anúncio!');
       console.log(err);
@@ -78,7 +119,7 @@ export function CreateAdModal() {
                 Qual o Game?
               </label>
               <SelectInput games={games} />
-                <select
+              {/* <select
                 id="game"
                 name="game"
                 className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
@@ -94,7 +135,7 @@ export function CreateAdModal() {
                     </option>
                   );
                 })}
-              </select> 
+              </select> */}
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="name">Seu nome (ou nickname)</label>
@@ -246,6 +287,7 @@ export function CreateAdModal() {
               >
                 Cancelar
               </Dialog.Close>
+
               <button
                 type="submit"
                 className="flex gap-3  items-center bg-violet-500 px-5 h-12 rounded-md font-semibold hover:bg-violet-600 
