@@ -2,6 +2,8 @@ import * as Checkbox from '@radix-ui/react-checkbox';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import { Input } from './Form/Input';
+import { ToastContainer, toast } from 'react-toastify';
+
 import { Check, GameController, Handshake } from 'phosphor-react';
 import { FormEvent, useContext, useEffect, useState } from 'react';
 import axios from 'axios';

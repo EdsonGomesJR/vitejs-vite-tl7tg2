@@ -7,9 +7,10 @@ import { GameBanner } from './components/GameBanner';
 import { CreateAdBanner } from './components/CreateAdBanner';
 import { CreateAdModal } from './components/CreateAdModal';
 import { GamesContext } from './contexts/GamesContext';
+import { toast, ToastContainer } from 'react-toastify';
 
 export function Home() {
-  const { games, listGames } = useContext(GamesContext);
+  const { games, listGames, modalOpen, handleModal } = useContext(GamesContext);
 
   useEffect(() => {
     listGames();
@@ -51,7 +52,7 @@ export function Home() {
         })}
       </div>
 
-      <Dialog.Root>
+      <Dialog.Root open={modalOpen} onOpenChange={handleModal}>
         <CreateAdBanner />
         <CreateAdModal />
       </Dialog.Root>

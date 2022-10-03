@@ -14,6 +14,8 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
 } from '@radix-ui/react-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { api } from '../../services.api';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { useNavigate } from 'react-router-dom';
@@ -47,16 +49,15 @@ export interface Ad {
 export function CreateAdModal() {
   const navigate = useNavigate();
 
-  const { games, listGames } = useContext(GamesContext);
-  const [gameId, setGameId] = useState('');
-  const [closeModal, setCloseModal] = useState(false);
+  const { games, listGames, handleModal } = useContext(GamesContext);
+  const [newAdCreated, setNewAdCreated] = useState(false);
 
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
 
   useEffect(() => {
     listGames();
-  }, [closeModal]);
+  }, [newAdCreated]);
 
   async function handleCreateAd(event: FormEvent) {
     event.preventDefault();
@@ -73,17 +74,24 @@ export function CreateAdModal() {
     }
 
     try {
-      await api.post(`/games/${data.game}/ads`, {
-        name: data.name,
-        yearsPlaying: Number(data.yearsPlaying),
-        discord: data.discord,
-        weekDays: weekDays.map(Number), //converte pra number
-        useVoiceChannel: useVoiceChannel,
-        hourStart: data.hourStart,
-        hourEnd: data.hourEnd,
-      });
-      alert('Anuncio criado com sucesso!');
-      navigate(0);
+      await toast.promise(
+        api.post(`/games/${data.game}/ads`, {
+          name: data.name,
+          yearsPlaying: Number(data.yearsPlaying),
+          discord: data.discord,
+          weekDays: weekDays.map(Number), //converte pra number
+          useVoiceChannel: useVoiceChannel,
+          hourStart: data.hourStart,
+          hourEnd: data.hourEnd,
+        }),
+        {
+          pending: 'Envindo solicitação',
+          success: 'Anúncio criado com sucesso!',
+          error: 'Erro ao criar o anúncio!',
+        }
+      );
+      setTimeout(() => handleModal(false), 3000);
+      setNewAdCreated(true);
     } catch (err) {
       alert('Erro ao criar o anúncio!');
       console.log(err);
@@ -92,6 +100,8 @@ export function CreateAdModal() {
 
   return (
     <Dialog.Portal className="">
+      <ToastContainer autoClose={3000} />
+
       <Dialog.Overlay className="bg-black/60 inset-0 fixed  ">
         <Dialog.DialogContent
           className="fixed bg-[#2a2634] py-4 px-8  
@@ -287,7 +297,7 @@ export function CreateAdModal() {
               >
                 Cancelar
               </Dialog.Close>
-
+              {}
               <button
                 type="submit"
                 className="flex gap-3  items-center bg-violet-500 px-5 h-12 rounded-md font-semibold hover:bg-violet-600 

@@ -14,6 +14,8 @@ interface Game {
 interface GamesContextType {
   listGames: () => void;
   games: Game[];
+  modalOpen: boolean;
+  handleModal: (state: boolean) => void;
 }
 
 interface GamesContextProviderProps {
@@ -24,6 +26,8 @@ export const GamesContext = createContext({} as GamesContextType);
 
 export function GamesContextProvider({ children }: GamesContextProviderProps) {
   const [games, setGames] = useState<Game[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  console.log(modalOpen);
 
   async function listGames() {
     const response = await api.get('/games');
@@ -32,11 +36,17 @@ export function GamesContextProvider({ children }: GamesContextProviderProps) {
     console.log('ListGames : renderizei do context', response.data);
   }
 
+  function handleModal(state: boolean) {
+    setModalOpen(state);
+  }
+
   return (
     <GamesContext.Provider
       value={{
         listGames,
         games,
+        modalOpen,
+        handleModal,
       }}
     >
       {children}

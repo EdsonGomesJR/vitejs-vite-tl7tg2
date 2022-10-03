@@ -126,9 +126,11 @@ export function CardBack(props: BackCardProps) {
         <div className=" flex items-center justify-between font-semibold ">
           <span> Usa o discord? </span>
           <span
-            className={`bg-emerald-500/80 font-black xl:p-2 rounded text-center underline decoration-2 underline-offset-2 p-1`}
+            className={` font-black xl:p-2 rounded text-center underline decoration-2 underline-offset-2 p-1 ${
+              props.useVoiceChannel ? 'bg-emerald-500/80' : 'bg-rose-500/80'
+            }`}
           >
-            Sim
+            {props.useVoiceChannel ? 'Sim' : 'Não'}
           </span>
         </div>
         <div className="flex justify-between font-semibold">

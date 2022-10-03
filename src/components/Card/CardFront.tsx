@@ -14,7 +14,7 @@ export function CardFront(props: AdsUserProps) {
           rounded 
           border-zinc-900 
           inset-[4px] 
-          gap-6
+          gap-3
           xl:flex-col 
            xl:inset-[6px] xl:gap-2
           "
@@ -39,7 +39,7 @@ export function CardFront(props: AdsUserProps) {
             />{' '}
           </div>
         </div>
-        <span className="bg-violet-700 p-2 rounded-md font-bold">
+        <span className=" bg-violet-700 p-2 rounded-md font-bold">
           {' '}
           {props.name}{' '}
         </span>
