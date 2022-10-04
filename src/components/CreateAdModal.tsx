@@ -189,7 +189,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="0"
                     title="Domingo"
-                    className={`w-8 h-8 rounded  mobile:w-full ${
+                    className={`w-full h-8 rounded  ${
                       weekDays.includes('0') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -198,7 +198,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="1"
                     title="Segunda"
-                    className={`w-8 h-8 rounded  mobile:w-full  ${
+                    className={`w-full h-8 rounded    ${
                       weekDays.includes('1') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -207,7 +207,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="2"
                     title="Terça"
-                    className={`w-8 h-8 rounded  mobile:w-full  ${
+                    className={`w-full h-8 rounded    ${
                       weekDays.includes('2') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -216,7 +216,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="3"
                     title="Quarta"
-                    className={`w-8 h-8 rounded  mobile:w-full  ${
+                    className={`w-full h-8 rounded    ${
                       weekDays.includes('3') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -225,7 +225,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="4"
                     title="Quinta"
-                    className={`w-8 h-8 rounded  mobile:w-full   ${
+                    className={`w-full h-8 rounded     ${
                       weekDays.includes('4') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -234,7 +234,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="5"
                     title="Sexta"
-                    className={`w-8 h-8 rounded  mobile:w-full  ${
+                    className={`w-full h-8 rounded    ${
                       weekDays.includes('5') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -243,7 +243,7 @@ export function CreateAdModal() {
                   <ToggleGroup.Item
                     value="6"
                     title="Sábado"
-                    className={`w-8 h-8 rounded  mobile:w-full  ${
+                    className={`w-full h-8 rounded    ${
                       weekDays.includes('6') ? 'bg-violet-500' : 'bg-zinc-900'
                     }`}
                   >
@@ -289,10 +289,10 @@ export function CreateAdModal() {
               Costumo me conectar ao chat de voz
             </label>
 
-            <footer className="mt-4 flex justify-end gap-4 mobile:justify-center mobile:gap-3 ">
+            <footer className="mt-4 flex xl:justify-end xl:gap-4 justify-center gap-3 ">
               <Dialog.Close
-                className="bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600
-                mobile:px-4 mobile:h-10 "
+                className="bg-zinc-500 xl:px-5 xl:h-12 rounded-md font-semibold hover:bg-zinc-600
+                px-4 h-10 "
                 type="button"
               >
                 Cancelar
@@ -300,8 +300,8 @@ export function CreateAdModal() {
               {}
               <button
                 type="submit"
-                className="flex gap-3  items-center bg-violet-500 px-5 h-12 rounded-md font-semibold hover:bg-violet-600 
-                mobile:gap-2 mobile:px-4 mobile:h-10  "
+                className="flex xl:gap-3  items-center bg-violet-500 xl:px-5 xl:h-12 rounded-md font-semibold hover:bg-violet-600 
+                gap-2 px-4 h-10  "
               >
                 <GameController className="w-6 h-6" />
                 Encontrar duo

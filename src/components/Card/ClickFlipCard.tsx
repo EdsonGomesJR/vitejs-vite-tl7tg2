@@ -17,7 +17,7 @@ export function ClickFlipCard(props: Ads) {
   const [flip, setFlip] = useState(false);
 
   return (
-    <div className="flex p-3 xl:p-2  mt-2 xl:mt-10 ">
+    <div className="flex p-3 xl:p-2  mt-2  ">
       <div
         // Card
         className={`card 

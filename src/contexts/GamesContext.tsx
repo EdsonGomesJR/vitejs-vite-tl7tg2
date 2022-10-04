@@ -1,7 +1,5 @@
-import axios from 'axios';
 import { createContext, ReactNode, useState } from 'react';
 import { api } from '../../services.api';
-import { BASE_URL } from '../utils/baseUrl';
 
 interface Game {
   id: string;
