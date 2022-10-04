@@ -73,7 +73,7 @@ export function AdsPage() {
           })}
           {hasAds && !loading ? (
             <div
-              className="p-2 flex xl:grid xl:grid-cols-4  button-effect after:rounded-xl  rounded-xl mt-4 items-center xl:gap-4
+              className="p-2 flex xl:grid xl:grid-cols-4  button-effect after:rounded-xl before:animate-none rounded-xl mt-4 items-center xl:gap-4
             flex-col  "
             >
               {ads.map((ad) => {
