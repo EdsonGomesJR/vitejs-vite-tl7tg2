@@ -61,6 +61,7 @@ export function AdsPage() {
         <Loading />
       ) : (
         <div
+          key={gameTitle}
           className={` p-2 text-white flex flex-col items-center justify-center  bg-${gameTitle}
           `}
         >
@@ -83,6 +84,7 @@ export function AdsPage() {
           })}
           {hasAds && !loading ? (
             <div
+              key={gameTitle}
               className={`p-2 flex xl:grid xl:grid-cols-4  button-effect after:rounded-xl before:animate-none after:bg-${gameTitle}
                after:bg-cover  after:bg-norepeat  after:opacity-95 rounded-xl mt-4 items-center xl:gap-4
             flex-col   `}
