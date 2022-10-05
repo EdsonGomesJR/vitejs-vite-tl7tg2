@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { GamesContext } from './contexts/GamesContext';
 import { Warning } from 'phosphor-react';
 import { Loading } from './components/Loading';
-import { BASE_URL } from './utils/baseUrl';
 import { ClickFlipCard } from './components/Card/ClickFlipCard';
 import { api } from '../services.api';
 
@@ -24,8 +23,10 @@ export function AdsPage() {
   const [hasAds, setHasAds] = useState(false);
   const { games, listGames } = useContext(GamesContext);
   const [loading, setLoading] = useState(true);
+  const [gameTitle, setGameTitle] = useState('');
 
   useEffect(() => {
+    loadAds();
     listGames();
     games.map((game) => {
       if (id === game.id && game._count.ads >= 1) {
@@ -33,8 +34,6 @@ export function AdsPage() {
         setLoading(false);
       }
     });
-
-    loadAds();
 
     setTimeout(() => {
       setLoading(false);
@@ -44,43 +43,55 @@ export function AdsPage() {
   async function loadAds() {
     const response = await api.get(`/games/${id}/ads`);
     setAds(response.data);
+
+    games.map((game) => {
+      if (id === game.id) {
+        const formattedTitle = game.title
+          .replace(/[^0-9a-zA-Z]|\s/g, '')
+          .toLowerCase();
+
+        setGameTitle(formattedTitle);
+        console.log('log do loadAds', formattedTitle);
+      }
+    });
   }
   return (
-    // <>
-    //   <div className="block text-white">Learn Design</div>
-    //   <div className="rainbow"></div>
-    //   <div className="button-effect">  clica</div>
-    // </>
     <>
       {loading ? (
         <Loading />
       ) : (
-        <div className=" p-2 text-white flex flex-col items-center justify-center">
+        <div
+          className={` p-2 text-white flex flex-col items-center justify-center  bg-${gameTitle}
+          `}
+        >
           {games.map((game) => {
             if (id === game.id) {
               return (
-                <div key={game.id}>
-                  <p className="text-center text-3xl text-white xl:m-10 m-4 xl:mb-0 mb-7">
-                    Estes são os anúncios para:{' '}
-                  </p>
-                  <h1 className="text-6xl text-center text-white font-black">
-                    {' '}
-                    {game.title}{' '}
-                  </h1>
-                </div>
+                <>
+                  <div key={game.id}>
+                    <p className="text-center text-3xl text-shadow text-white xl:m-10 m-4 xl:mb-0 mb-7 ">
+                      Estes são os anúncios para:{' '}
+                    </p>
+                    <h1 className="text-6xl text-center text-white font-black text-shadow">
+                      {' '}
+                      {game.title}
+                    </h1>
+                  </div>
+                </>
               );
             }
           })}
           {hasAds && !loading ? (
             <div
-              className="p-2 flex xl:grid xl:grid-cols-4  button-effect after:rounded-xl before:animate-none rounded-xl mt-4 items-center xl:gap-4
-            flex-col  "
+              className={`p-2 flex xl:grid xl:grid-cols-4  button-effect after:rounded-xl before:animate-none after:bg-${gameTitle}
+               after:bg-cover  after:bg-norepeat  after:opacity-95 rounded-xl mt-4 items-center xl:gap-4
+            flex-col   `}
             >
               {ads.map((ad) => {
                 return (
                   <div
                     key={ad.id}
-                    className="flex items-center justify-center   "
+                    className="flex items-center  justify-center   "
                   >
                     <ClickFlipCard
                       id={ad.id}
@@ -100,7 +111,7 @@ export function AdsPage() {
               className={`${
                 hasAds
                   ? 'none'
-                  : 'flex items-center text-center justify-center flex-col xl:mt-[10rem] '
+                  : 'flex items-center text-center justify-center flex-col xl:mt-[10rem]'
               } `}
             >
               <h1 className="font-black text-3xl xl:text-4xl text-white m-10 ">

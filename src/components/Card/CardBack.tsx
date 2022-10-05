@@ -15,7 +15,7 @@ export function CardBack(props: BackCardProps) {
 
   return (
     <div
-      className="back absolute 
+      className="back absolute  
           bg-gradient-to-br from-zinc-900 via-zinc-700 to-zinc-500   
           rounded 
           p-2 

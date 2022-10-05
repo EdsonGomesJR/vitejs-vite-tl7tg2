@@ -35,10 +35,11 @@ export function ClickFlipCard(props: Ads) {
           min-h-[12rem]
           mb-1 
           min-w-[20rem]
+          
           ${flip ? 'flip' : ''}`}
         onClick={() => setFlip(!flip)}
       >
-        <div className=" hidden xl:absolute xl:flex  xl:border-2 xl:border-zinc-700 xl:rotate-[270deg] xl:-left-6  xl:p-2 xl:rounded-md xl:text-zinc-700 xl:font-black">
+        <div className=" hidden  xl:absolute xl:flex  xl:border-2 xl:border-zinc-700 xl:rotate-[270deg] xl:-left-6  xl:p-2 xl:rounded-md xl:text-zinc-700 xl:font-black">
           clique no card
         </div>
         <CardFront
