@@ -21,13 +21,15 @@ export function AdsPage() {
   const { id } = useParams();
   const [ads, setAds] = useState<Ads[]>([]);
   const [hasAds, setHasAds] = useState(false);
-  const { games, listGames } = useContext(GamesContext);
+  const { games, listGames, gameTitle, gameId, gameBannerUrl, handleGameInfo } =
+    useContext(GamesContext);
   const [loading, setLoading] = useState(true);
-  const [gameTitle, setGameTitle] = useState('');
 
   useEffect(() => {
     loadAds();
     listGames();
+    handleGameInfo(id);
+
     games.map((game) => {
       if (id === game.id && game._count.ads >= 1) {
         setHasAds(true);
@@ -40,20 +42,25 @@ export function AdsPage() {
     }, 2500);
   }, [loading]);
 
+  const formattedTitle = gameTitle
+    .replace(/[^0-9a-zA-Z]|\s/g, '')
+    .toLowerCase();
+
   async function loadAds() {
     const response = await api.get(`/games/${id}/ads`);
+    console.log('response Data do ADS', response.data);
     setAds(response.data);
 
-    games.map((game) => {
-      if (id === game.id) {
-        const formattedTitle = game.title
-          .replace(/[^0-9a-zA-Z]|\s/g, '')
-          .toLowerCase();
+    // games.map((game) => {
+    //   if (id === game.id) {
+    //     const formattedTitle = game.title
+    //       .replace(/[^0-9a-zA-Z]|\s/g, '')
+    //       .toLowerCase();
 
-        setGameTitle(formattedTitle);
-        console.log('log do loadAds', formattedTitle);
-      }
-    });
+    //     setGameTitle(formattedTitle);
+    //     console.log('log do loadAds', formattedTitle);
+    //   }
+    // });
   }
   return (
     <>
@@ -61,8 +68,7 @@ export function AdsPage() {
         <Loading />
       ) : (
         <div
-          key={gameTitle}
-          className={` p-2 text-white flex flex-col items-center justify-center  bg-${gameTitle}
+          className={` p-2 text-white flex flex-col items-center justify-center  bg-csgo
           `}
         >
           {games.map((game) => {
@@ -78,59 +84,62 @@ export function AdsPage() {
                       {game.title}
                     </h1>
                   </div>
-                </>
-              );
-            }
-          })}
-          {hasAds && !loading ? (
-            <div
-              key={gameTitle}
-              className={`p-2 flex xl:grid xl:grid-cols-4  button-effect after:rounded-xl before:animate-none after:bg-${gameTitle}
-               after:bg-cover  after:bg-norepeat  after:opacity-95 rounded-xl mt-4 items-center xl:gap-4
+                  {/* END - ADS HEADER */}
+                  {hasAds && !loading ? (
+                    <div
+                      className={`p-2 flex xl:grid xl:grid-cols-4  button-effect after:rounded-xl  w-full before:animate-none
+                after:bg-cover  after:bg-norepeat  after:opacity-95 rounded-xl mt-4 items-center xl:gap-4 after:bg-zinc-800
             flex-col   `}
-            >
-              {ads.map((ad) => {
-                return (
-                  <div
-                    key={ad.id}
-                    className="flex items-center  justify-center   "
-                  >
-                    <ClickFlipCard
-                      id={ad.id}
-                      hourEnd={ad.hourEnd}
-                      hourStart={ad.hourStart}
-                      name={ad.name}
-                      useVoiceChannel={ad.useVoiceChannel}
-                      weekDays={ad.weekDays}
-                      yearsPlaying={ad.yearsPlaying}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div
-              className={`${
-                hasAds
-                  ? 'none'
-                  : 'flex items-center text-center justify-center flex-col xl:mt-[10rem]'
-              } `}
-            >
-              <h1 className="font-black text-3xl xl:text-4xl text-white m-10 ">
-                Ainda não recebemos anúncios para esse game...
-              </h1>
-              {/* <div className="flex items-center justify-center p-2  opacity-80 rounded-full bg-gradient-to-r from-[#9572FC] via-[#43E7AD] to-[#E1D55D]">
+                    >
+                      {ads.map((ad) => {
+                        return (
+                          <div
+                            key={ad.id}
+                            className="flex items-center  justify-center   "
+                          >
+                            <ClickFlipCard
+                              id={ad.id}
+                              hourEnd={ad.hourEnd}
+                              hourStart={ad.hourStart}
+                              name={ad.name}
+                              useVoiceChannel={ad.useVoiceChannel}
+                              weekDays={ad.weekDays}
+                              yearsPlaying={ad.yearsPlaying}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div
+                      className={`${
+                        hasAds
+                          ? 'none'
+                          : 'flex items-center text-center justify-center flex-col xl:mt-[10rem]'
+                      } `}
+                    >
+                      <h1 className="font-black text-3xl xl:text-4xl text-white m-10 ">
+                        Ainda não recebemos anúncios para esse game...
+                      </h1>
+                      {/* <div className="flex items-center justify-center p-2  opacity-80 rounded-full bg-gradient-to-r from-[#9572FC] via-[#43E7AD] to-[#E1D55D]">
                 <div className=" pb-2  rounded-full bg-black  ">
                   <Warning size={250} className="pb-5 text-yellow-600" />
                 </div>
               </div> */}
-              <div className="button-effect rounded-full before:rounded-full after:rounded-full">
-                <div className=" pb-2  rounded-full bg-black  ">
-                  <Warning size={250} className="pb-5 text-yellow-600" />
-                </div>
-              </div>
-            </div>
-          )}
+                      <div className="button-effect rounded-full before:rounded-full after:rounded-full">
+                        <div className=" pb-2  rounded-full bg-black  ">
+                          <Warning
+                            size={250}
+                            className="pb-5 text-yellow-600"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </>
+              );
+            }
+          })}
         </div>
       )}
     </>

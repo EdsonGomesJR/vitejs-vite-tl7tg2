@@ -32,8 +32,7 @@ module.exports = {
         fortinite:
           'url(https://i0.wp.com/www.coliseugeek.com.br/wp-content/uploads/2021/09/coliseugeek-wallpaper-fortnite-4k_img1-scaled.jpg?resize=2048%2C1152&ssl=1) ',
 
-        csgo: 'url(https://s2.glbimg.com/gpiRRU02sLvmwd4W9hvRytQLSv8=/0x0:1536x864/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2019/k/3/EkiboYSX2eLJ2NxCY1rg/ss-ccc4ce6edd4c454b6ce7b0757e633b63aa93921d.1920x1080.jpg)',
-        grandtheftautoiv:
+        grandtheftautov:
           'url(https://upload.wikimedia.org/wikipedia/pt/9/91/Grand_Theft_Auto_IV_capa.png)',
         teamfighttactics:
           'url(https://www.spieltimes.com/wp-content/uploads/2021/12/Teamfight-Tactics-1.jpg)',
